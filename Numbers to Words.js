@@ -62,7 +62,9 @@ function addUpToTrillionsText(arrayOfArrays) {
     let range = ["", "ألف", "مليون", "مليار", "ترليون"];
     let rangeIndex = 0;
     for (let i = arrayOfArrays.length - 1; i >= 0; i--) {
+        
         arrayOfArrays[i].push(range[rangeIndex]);
+
         rangeIndex = rangeIndex + 1;
     }
     return arrayOfArrays;
@@ -253,8 +255,14 @@ function textArray_toWords(arrayOfArrays) {
         else{
             tens =  arrayOfArrays[i][1];
         }
-
-        output = output + hund + ones + tens;
+        if(arrayOfArrays[i][3] != undefined){
+            //this should add آلاف و مليون و مليار و تريليون
+            output = output + hund + ones + tens + " و " + arrayOfArrays[i][3];
+        }
+        else{
+            output = output + hund + ones + tens;
+        }
+        
                     
     }
     return output;
