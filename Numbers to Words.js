@@ -13,7 +13,7 @@ STEP5: ["", "", "ستة"]"مليار" ["أربعة", 5, "إثنان"]"مليون
 
 STEP6: ["", "", "ستة"]"مليار" ["أربعة", "خمسون", "إثنان"]"مليون" ["ستة", "تسعون", "ثمانية"]"ألف" ["", "إثنا عشرة"]""
 
-STEP7: ["", "", "ستة"]"مليار" ["أربعة hundreds", "خمسون", "إثنان"]"مليون" ["ستة hundred", "تسعون", "ثمانية"]"ألف" ["", "إثنا عشرة"]""
+STEP7: ["", "", "ستة"]"مليار" ["أربعة مائة", "خمسون", "إثنان"]"مليون" ["ستة hundred", "تسعون", "ثمانية"]"ألف" ["", "إثنا عشرة"]""
 
 "ستة مليار أربعة hundred خمسون إثنان مليون ستة hundred تسعون ثمانية ألف إثنا عشرة"
 *******************/
@@ -25,9 +25,9 @@ var input = document.getElementById("inputText").value;
 //console.log(numberToArrray(input));
 //console.log(addUpToTrillionsText(numberToArrray(input)));
 //console.log(writeOnes(addUpToTrillionsText(numberToArrray(input))));
-//console.log(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input)))));
-//console.log(writeTens(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input))))));
-//console.log(addHundredsWord(writeTens(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input)))))));
+//console.log(writeمائة(writeOnes(addUpToTrillionsText(numberToArrray(input)))));
+//console.log(writeTens(writeمائة(writeOnes(addUpToTrillionsText(numberToArrray(input))))));
+//console.log(addHundredsWord(writeTens(writeمائة(writeOnes(addUpToTrillionsText(numberToArrray(input)))))));
 //console.log(textArray_toWords(addHundredsWord(writeTens(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input))))))));
 var out = textArray_toWords(addHundredsWord(writeTens(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input)))))));
 var outputPara = document.createElement("P");
@@ -219,10 +219,10 @@ function oneTeens_toWords(teens){
 function addHundredsWord(arrayOfArrays){
     //this function does the following
     //["", "", "ستة", "Billions"] ["أربعة", "خمسون", "إثنان", "Millions"] ["ستة", "تسعون", "ثمانية", "Thousands"] ["", "إثنا عشرة", ""]
-    // --------> ["", "", "ستة", "Billions"] ["أربعة hundreds", "خمسون", "إثنان", "Millions"] ["ستة hundreds", "تسعون", "ثمانية", "Thousands"] ["", "إثنا عشرة", ""]
+    // --------> ["", "", "ستة", "Billions"] ["أربعة مائة", "خمسون", "إثنان", "Millions"] ["ستة مائة", "تسعون", "ثمانية", "Thousands"] ["", "إثنا عشرة", ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         if(arrayOfArrays[i][0] != ""){
-            arrayOfArrays[i][0] = arrayOfArrays[i][0] + " hundreds";
+            arrayOfArrays[i][0] = arrayOfArrays[i][0] + " مائة";
         }        
     }
     return arrayOfArrays;
@@ -230,8 +230,8 @@ function addHundredsWord(arrayOfArrays){
 
 function textArray_toWords(arrayOfArrays) {
     //this function does the following
-    //["", "", "ستة", "Billions"] ["أربعة hundreds", "خمسون", "إثنان", "Millions"] ["ستة hundreds", "تسعون", "ثمانية", "Thousands"] ["", "إثنا عشرة", ""]
-    // -------> ستة billions أربعة hundreds خمسون إثنان millions ستة hundreds تسعون ثمانية thousands إثنا عشرة
+    //["", "", "ستة", "Billions"] ["أربعة مائة", "خمسون", "إثنان", "Millions"] ["ستة مائة", "تسعون", "ثمانية", "Thousands"] ["", "إثنا عشرة", ""]
+    // -------> ستة billions أربعة مائة خمسون إثنان millions ستة مائة تسعون ثمانية thousands إثنا عشرة
     let output = "";
     for (let i = 0; i < arrayOfArrays.length; i++) {
         for(let j = 0; j<arrayOfArrays[i].length; j++){
