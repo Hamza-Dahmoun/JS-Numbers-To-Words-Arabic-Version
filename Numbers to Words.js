@@ -5,17 +5,17 @@ STEP1: 006452698012
 
 STEP2: [0, 0, 6] [4,5, 2] [6, 9, 8] [0, 1, 2]
 
-STEP3: [0, 0, 6]"Billions" [4, 5, 2]"Millions" [6, 9, 8]"Thousands" [0, 1, 2]""
+STEP3: [0, 0, 6]"مليار" [4, 5, 2]"مليون" [6, 9, 8]"ألف" [0, 1, 2]""
 
-STEP4: ["", "", 6]"Billions" [4, 5, 2]"Millions" [6, 9, 8]"Thousands" ["", 1, 2]""
+STEP4: ["", "", 6]"مليار" [4, 5, 2]"مليون" [6, 9, 8]"ألف" ["", 1, 2]""
 
-STEP5: ["", "", "six"]"Billions" ["four", 5, "two"]"Millions" ["six", 9, "eight"]"Thousands" ["", 1, 2]""
+STEP5: ["", "", "ستة"]"مليار" ["أربعة", 5, "إثنان"]"مليون" ["ستة", 9, "ثمانية"]"ألف" ["", 1, 2]""
 
-STEP6: ["", "", "six"]"Billions" ["four", "fifty", "two"]"Millions" ["six", "ninety", "eight"]"Thousands" ["", "twelve"]""
+STEP6: ["", "", "ستة"]"مليار" ["أربعة", "خمسون", "إثنان"]"مليون" ["ستة", "تسعون", "ثمانية"]"ألف" ["", "twelve"]""
 
-STEP7: ["", "", "six"]"Billions" ["four hundreds", "fifty", "two"]"Millions" ["six hundred", "ninety", "eight"]"Thousands" ["", "twelve"]""
+STEP7: ["", "", "ستة"]"مليار" ["أربعة hundreds", "خمسون", "إثنان"]"مليون" ["ستة hundred", "تسعون", "ثمانية"]"ألف" ["", "twelve"]""
 
-"six Billions four hundred fifty two Millions six hundred ninety eight Thousands twelve"
+"ستة مليار أربعة hundred خمسون إثنان مليون ستة hundred تسعون ثمانية ألف twelve"
 *******************/
 
 function startWriting(){
@@ -78,7 +78,7 @@ function addUpToTrillionsText(arrayOfArrays) {
 function writeOnes(arrayOfArrays) {
     //this function does the following:
     //[0, 0, 6, "Billions"] [4, 5, 2, "Millions"] [6, 9, 8, "Thousands"] [0, 1, 2, ""]
-    // ------> [0, 0, "six", "Billions"] [4, 5, "two", "Millions"] [6, 9, "eight", "Thousands"] [0, 1, 2, ""]
+    // ------> [0, 0, "ستة", "Billions"] [4, 5, "إثنان", "Millions"] [6, 9, "ثمانية", "Thousands"] [0, 1, 2, ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         if (arrayOfArrays[i][1] != "1") {
             //so it won't be a teen number
@@ -93,39 +93,39 @@ function oneNumber_toWord(character) {
             return "";
             break;
         case "1":
-            return "One";
+            return "واحد";
             break;
         case "2":
-            return "Two";
+            return "إثنان";
             break;
         case "3":
-            return "Three";
+            return "ثلاثة";
             break;
         case "4":
-            return "Four";
+            return "أربعة";
             break;
         case "5":
-            return "Five";
+            return "خمسة";
             break;
         case "6":
-            return "Six";
+            return "ستة";
             break;
         case "7":
-            return "Seven";
+            return "سبعة";
             break;
         case "8":
-            return "Eight";
+            return "ثمانية";
             break;
         case "9":
-            return "Nine";
+            return "تسعة";
             break;
     }
 }
 
 function writeHundreds(arrayOfArrays) {
     //this function does the following:
-    //[0, 0, "six", "Billions"] [4, 5, "two", "Millions"] [6, 9, "eight", "Thousands"] [0, 1, 2, ""]
-    // -------> ["", 0, "six", "Billions"] ["four", 5, "two", "Millions"] ["six", 9, "eight", "Thousands"] ["", 1, 2, ""]
+    //[0, 0, "ستة", "Billions"] [4, 5, "إثنان", "Millions"] [6, 9, "ثمانية", "Thousands"] [0, 1, 2, ""]
+    // -------> ["", 0, "ستة", "Billions"] ["أربعة", 5, "إثنان", "Millions"] ["ستة", 9, "ثمانية", "Thousands"] ["", 1, 2, ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         arrayOfArrays[i][0] = oneNumber_toWord(arrayOfArrays[i][0]);
     }
@@ -134,8 +134,8 @@ function writeHundreds(arrayOfArrays) {
 
 function writeTens(arrayOfArrays) {
     //this function does the following:
-    //["", 0, "six", "Billions"] ["four", 5, "two", "Millions"] ["six", 9, "eight", "Thousands"] ["", 1, 2, ""]
-    // --------> ["", "", "six", "Billions"] ["four", "fifty", "two", "Millions"] ["six", "ninety", "eight", "Thousands"] ["", "twelve", ""]
+    //["", 0, "ستة", "Billions"] ["أربعة", 5, "إثنان", "Millions"] ["ستة", 9, "ثمانية", "Thousands"] ["", 1, 2, ""]
+    // --------> ["", "", "ستة", "Billions"] ["أربعة", "خمسون", "إثنان", "Millions"] ["ستة", "تسعون", "ثمانية", "Thousands"] ["", "twelve", ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         if (arrayOfArrays[i][1] != "1") {
             //so it won't be a teen number
@@ -156,35 +156,35 @@ function oneNormalTens_toWord(character) {
             return "";
             break;
         case "2":
-            return "Twenty";
+            return "عشرون";
             break;
         case "3":
-            return "Thirty";
+            return "ثلاثون";
             break;
         case "4":
-            return "Fourty";
+            return "أربعون";
             break;
         case "5":
-            return "Fifty";
+            return "خمسون";
             break;
         case "6":
-            return "Sixty";
+            return "ستون";
             break;
         case "7":
-            return "Seventy";
+            return "سبعون";
             break;
         case "8":
-            return "Eighty";
+            return "ثمانون";
             break;
         case "9":
-            return "Ninety";
+            return "تسعون";
             break;
     }
 }
 function oneTeens_toWords(teens){
     switch (teens) {
         case "10":
-            return "Ten";
+            return "عشرة";
             break;
         case "11":
             return "Eleven";
@@ -218,8 +218,8 @@ function oneTeens_toWords(teens){
 
 function addHundredsWord(arrayOfArrays){
     //this function does the following
-    //["", "", "six", "Billions"] ["four", "fifty", "two", "Millions"] ["six", "ninety", "eight", "Thousands"] ["", "twelve", ""]
-    // --------> ["", "", "six", "Billions"] ["four hundreds", "fifty", "two", "Millions"] ["six hundreds", "ninety", "eight", "Thousands"] ["", "twelve", ""]
+    //["", "", "ستة", "Billions"] ["أربعة", "خمسون", "إثنان", "Millions"] ["ستة", "تسعون", "ثمانية", "Thousands"] ["", "twelve", ""]
+    // --------> ["", "", "ستة", "Billions"] ["أربعة hundreds", "خمسون", "إثنان", "Millions"] ["ستة hundreds", "تسعون", "ثمانية", "Thousands"] ["", "twelve", ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         if(arrayOfArrays[i][0] != ""){
             arrayOfArrays[i][0] = arrayOfArrays[i][0] + " hundreds";
@@ -230,8 +230,8 @@ function addHundredsWord(arrayOfArrays){
 
 function textArray_toWords(arrayOfArrays) {
     //this function does the following
-    //["", "", "six", "Billions"] ["four hundreds", "fifty", "two", "Millions"] ["six hundreds", "ninety", "eight", "Thousands"] ["", "twelve", ""]
-    // -------> six billions four hundreds fifty two millions six hundreds ninety eight thousands twelve
+    //["", "", "ستة", "Billions"] ["أربعة hundreds", "خمسون", "إثنان", "Millions"] ["ستة hundreds", "تسعون", "ثمانية", "Thousands"] ["", "twelve", ""]
+    // -------> ستة billions أربعة hundreds خمسون إثنان millions ستة hundreds تسعون ثمانية thousands twelve
     let output = "";
     for (let i = 0; i < arrayOfArrays.length; i++) {
         for(let j = 0; j<arrayOfArrays[i].length; j++){
