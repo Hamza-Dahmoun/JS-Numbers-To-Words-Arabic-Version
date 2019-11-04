@@ -57,12 +57,12 @@ function numberToArrray(number) {
 }
 
 function addUpToTrillionsText(arrayOfArrays) {
+    console.log(arrayOfArrays);
     //this function does the following:
     //[0, 0, 6] [4,5, 2] [6, 9, 8] [0, 1, 2] -------> [0, 0, 6, "مليار"] [4, 5, 2, "مليون"] [6, 9, 8, "ألف"] [0, 1, 2, ""]
     let range = ["", "ألف", "مليون", "مليار", "ترليون"];
     let rangeIndex = 0;
     for (let i = arrayOfArrays.length - 1; i >= 0; i--) {
-        
         arrayOfArrays[i].push(range[rangeIndex]);
 
         rangeIndex = rangeIndex + 1;
@@ -236,13 +236,12 @@ function textArray_toWords(arrayOfArrays) {
     //["", "", "ستة", "مليار"] ["أربعة مائة", "خمسون", "إثنان", "مليون"] ["ستة مائة", "تسعون", "ثمانية", "ألف"] ["", "إثنا عشرة", ""]
     // -------> ستة مليار أربعة مائة خمسون إثنان مليون ستة مائة تسعون ثمانية ألف إثنا عشرة
     let output = "";
-    console.log(arrayOfArrays);
+    //console.log(arrayOfArrays);
     
     for (let i = 0; i < arrayOfArrays.length; i++) {
         let hund = arrayOfArrays[i][0];
         let ones = "";
         if(arrayOfArrays[i][2] != ""){
-            console.log("hi");
             ones = " و " + arrayOfArrays[i][2];
         }
         else{
