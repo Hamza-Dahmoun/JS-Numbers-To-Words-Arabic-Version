@@ -21,14 +21,7 @@ STEP7: ["", "", "ستة"]"مليار" ["أربعة مائة", "خمسون", "إ�
 function startWriting(){
 var input = document.getElementById("inputText").value;
 //var input = prompt("Please enter a number: "); 
-//console.log(input);
-//console.log(numberToArrray(input));
-//console.log(addUpToترليونText(numberToArrray(input)));
-//console.log(writeOnes(addUpToترليونText(numberToArrray(input))));
-//console.log(writeمائة(writeOnes(addUpToترليونText(numberToArrray(input)))));
-//console.log(writeTens(writeمائة(writeOnes(addUpToترليونText(numberToArrray(input))))));
-//console.log(addHundredsWord(writeTens(writeمائة(writeOnes(addUpToترليونText(numberToArrray(input)))))));
-//console.log(textArray_toWords(addHundredsWord(writeTens(writeHundreds(writeOnes(addUpToترليونText(numberToArrray(input))))))));
+
 var out = textArray_toWords(addHundredsWord(writeTens(writeHundreds(writeOnes(addUpToTrillionsText(numberToArrray(input)))))));
 var outputPara = document.createElement("P");
 outputPara.innerHTML = addSpacesInNumber(input) + "<br/> <br/>" + out;
@@ -222,8 +215,16 @@ function addHundredsWord(arrayOfArrays){
     // --------> ["", "", "ستة", "مليار"] ["أربعة مائة", "خمسون", "إثنان", "مليون"] ["ستة مائة", "تسعون", "ثمانية", "ألف"] ["", "إثنا عشرة", ""]
     for (let i = 0; i < arrayOfArrays.length; i++) {
         if(arrayOfArrays[i][0] != ""){
-            arrayOfArrays[i][0] = arrayOfArrays[i][0] + " مائة";
-        }        
+            if(arrayOfArrays[i][0] == "واحد"){                
+                arrayOfArrays[i][0] = " مائة";
+            }
+            else if(arrayOfArrays[i][0] == "إثنان"){
+                arrayOfArrays[i][0] = " مائتين";
+            }
+            else{
+                arrayOfArrays[i][0] = arrayOfArrays[i][0] + " مائة";
+            }            
+        }               
     }
     return arrayOfArrays;
 }
@@ -233,12 +234,28 @@ function textArray_toWords(arrayOfArrays) {
     //["", "", "ستة", "مليار"] ["أربعة مائة", "خمسون", "إثنان", "مليون"] ["ستة مائة", "تسعون", "ثمانية", "ألف"] ["", "إثنا عشرة", ""]
     // -------> ستة مليار أربعة مائة خمسون إثنان مليون ستة مائة تسعون ثمانية ألف إثنا عشرة
     let output = "";
+    console.log(arrayOfArrays);
+    
     for (let i = 0; i < arrayOfArrays.length; i++) {
-        for(let j = 0; j<arrayOfArrays[i].length; j++){
-            if(arrayOfArrays[i][j]!=0){
-                output = output + " " + arrayOfArrays[i][j];
-            }            
-        }            
+        let hund = arrayOfArrays[i][0];
+        let ones = "";
+        if(arrayOfArrays[i][2] != ""){
+            console.log("hi");
+            ones = " و " + arrayOfArrays[i][2];
+        }
+        else{
+            ones =  arrayOfArrays[i][2];
+        }
+        let tens = "";
+        if(arrayOfArrays[i][1] != ""){
+            tens = " و " + arrayOfArrays[i][1];
+        }
+        else{
+            tens =  arrayOfArrays[i][1];
+        }
+
+        output = output + hund + ones + tens;
+                    
     }
     return output;
 }
